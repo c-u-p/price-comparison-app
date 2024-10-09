@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparison Results</title>
+</head>
+<body>
+    <h1>Price Comparison Results</h1>
+
+    {% if tables %}
+        <h2>Price Data:</h2>
+        {{ tables|safe }}
+
+        {% if best_price is not none and best_website is not none %}
+            <h2>Best Price: {{ best_website }} - ${{ best_price }}</h2>
+        {% else %}
+            <h2>No valid prices found.</h2>
+        {% endif %}
+    {% else %}
+        <h2>Could not retrieve prices. Please try again later.</h2>
+    {% endif %}
+
+    <a href="/">Compare another product</a>
+</body>
+</html>
